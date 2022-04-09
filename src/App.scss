@@ -1,0 +1,17 @@
+$color: steelblue;
+
+:root {
+  --font-size: 1.5em;
+}
+
+body {
+  color: $color;
+}
+
+.text {
+  font-size: 2em;
+}
+
+.unused {
+  color: red;
+}
