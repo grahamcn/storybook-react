@@ -1,2 +1,1 @@
-# React web application starter
-
+# Storybook - React
