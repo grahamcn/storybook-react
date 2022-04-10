@@ -6,11 +6,20 @@
   "scripts": {
     "dev": "webpack serve --open --config webpack/webpack.js",
     "build": "webpack --config webpack/webpack.js --mode=production",
-    "lint": "eslint .",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "lint": "eslint . --ext ts,tsx,js,jsx,mdx",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,mdx,json}' --config ./.prettierrc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint-staged": "lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.mdx": ["eslint --fix", "prettier --write"]
   },
   "author": "Graham Neilson",
   "license": "ISC",
@@ -24,24 +33,31 @@
     "@babel/core": "^7.17.9",
     "@storybook/addon-actions": "^6.4.21",
     "@storybook/addon-essentials": "^6.4.21",
+    "@storybook/addon-info": "^5.3.21",
     "@storybook/addon-interactions": "^6.4.21",
     "@storybook/addon-links": "^6.4.21",
+    "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.4.21",
     "@storybook/testing-library": "^0.0.9",
+    "@types/storybook__react": "^5.2.1",
     "@typescript-eslint/eslint-plugin": "^5.18.0",
     "@typescript-eslint/parser": "^5.18.0",
     "babel-loader": "^8.2.4",
-    "css-loader": "^6.7.1",
+    "css-loader": "^5.2.6",
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-mdx": "^1.17.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
     "mini-css-extract-plugin": "^2.6.0",
     "prettier": "^2.6.2",
+    "react-docgen-typescript-loader": "^3.7.2",
     "sass": "^1.49.11",
-    "sass-loader": "^12.6.0",
-    "style-loader": "^3.3.1",
+    "sass-loader": "^10.1.1",
+    "style-loader": "^2.0.0",
     "ts-loader": "^9.2.8",
     "typescript": "^4.6.3",
     "webpack": "^5.71.0",

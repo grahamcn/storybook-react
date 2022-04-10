@@ -1,0 +1,82 @@
+// @import '../../styles/typography/index.scss';
+
+/*
+Apply generic properties to generic button definition
+The idea being that the button can override more generic settings.
+Which can again be overriden in context
+*/
+.button {
+  --btn-border-radius: var(--border-radius);
+  --btn-border-colour: var(--border-colour);
+  --btn-border-width: var(--border-width);
+  --btn-border-style: var(--border-style);
+
+  --btn-text-colour: var(--text-colour);
+  --btn-text-colour_alt: var(--text-colour_alt);
+
+  --btn-padding-x: var(--padding);
+  --btn-padding-y: var(--padding-tight);
+  --btn-padding: var(--btn-padding-y) var(--btn-padding-x);
+}
+
+// where values are fixed, if they differ across projects they require converting to a custom property
+.button {
+  border: var(--btn-border-style) var(--btn-border-width)
+    var(--btn-border-colour);
+  border-radius: var(--btn-border-radius);
+  color: var(--btn-text-colour);
+  cursor: pointer;
+  line-height: 1; // assuming this is the base, most common case
+  overflow: hidden;
+  font: inherit;
+  padding: var(--btn-padding);
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  white-space: nowrap;
+
+  // @include responsiveFont-300();
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
+  &.primary {
+    color: var(--btn-text-colour_alt);
+    background-color: var(--primary-colour);
+    border-color: var(--primary-colour);
+  }
+
+  &.secondary {
+    border-color: var(--primary-colour);
+    background-color: var(--surface-background-colour);
+
+    &:hover {
+      background-color: var(--neutral-200);
+    }
+  }
+
+  &.small {
+    // @include responsiveFont-200();
+  }
+
+  &.icon-button {
+    padding: 0;
+    height: 48px;
+    width: 48px;
+
+    .icon {
+      position: relative;
+      top: 2px;
+      width: 34px;
+      height: 34px;
+    }
+  }
+}
+
+// links that appear as buttons
+a.button {
+  text-decoration: none;
+}
